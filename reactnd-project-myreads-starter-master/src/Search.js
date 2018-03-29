@@ -36,11 +36,11 @@ class Search extends React.Component {
   componentDidMount(){
     BooksAPI.getAll().then((myBooks)=>{
       this.setState({myBooks:myBooks})
-    })
+    }).catch
   }
 
   updateQuery = (query) =>{
-    this.setState({query:query})
+    this.setState({query:query.trim()})
       BooksAPI.search(this.state.query).then((books)=>{
       if (books) {
         let interse =[]
@@ -56,16 +56,12 @@ class Search extends React.Component {
         this.setState({myBooksOnDisplay:interse})
         this.setState({queryResults:books})
       }
-    })
+    }).catch
   }
 
   render(){
-    let myBooksOnDisplay =[]
-    let queryResults = []
-    if (this.state.query) {
-      myBooksOnDisplay = this.state.myBooksOnDisplay
-      queryResults = this.state.queryResults
-    }
+    const { myBooksOnDisplay, queryResults } = this.state;
+   
     return(
       <div className="search-books">
       <div className="search-books-bar">
