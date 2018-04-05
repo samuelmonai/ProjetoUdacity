@@ -15,7 +15,7 @@ function Shelf (props) {
                     backgroundImage:book.imageLinks ? `url(${book.imageLinks.smallThumbnail})` :null
                     }}>
                   </div>
-                  <div className="book-shelf-changer"onclick="showCheckboxes()">
+                  <div className="book-shelf-changer">
                     <select value={book.shelf} onChange={(event)=>props.onMoveBook(book,event.target.value)} >
                     <option value="none">None</option>
                     <option value="currentlyReading">Currently Reading</option>
